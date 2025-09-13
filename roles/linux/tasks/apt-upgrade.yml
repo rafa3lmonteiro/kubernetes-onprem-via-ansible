@@ -1,0 +1,13 @@
+---
+#--> apt upgrade
+- name: Atualizar o cache do APT
+  apt:
+    update_cache: yes
+  register: update_cache_result
+
+- name: Upgrade de pacotes APT
+  apt:
+    upgrade: dist  
+  when: update_cache_result.changed 
+
+...

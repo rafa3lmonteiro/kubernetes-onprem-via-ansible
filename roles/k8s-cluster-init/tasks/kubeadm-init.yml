@@ -1,0 +1,18 @@
+---
+
+# Criação do cluster a partir do control plane
+- name: kubeadm init - Inicializar cluster Kubernetes
+  shell: |
+    kubeadm init --pod-network-cidr={{ pod_cidr }} --kubernetes-version {{ kubernetes_version }} --node-name {{ inventory_hostname }}
+  when: inventory_hostname in groups['control_plane']
+  run_once: true
+
+# Criação do ficheiro de contexto config
+- name: Kubeconfig para o root
+  shell: | 
+    mkdir -p $HOME/.kube
+    rm -r $HOME/.kube/config
+    cp -i /etc/kubernetes/admin.conf $HOME/.kube/config -f
+    chown $(id -u):$(id -g) $HOME/.kube/config
+  when: inventory_hostname in groups['control_plane']
+  run_once: true

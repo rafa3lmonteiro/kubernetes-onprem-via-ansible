@@ -1,0 +1,10 @@
+---
+#
+# Processo de inicializacao do cluster Kubernetes - OnPrem
+#
+
+- include_tasks: kubeadm-init.yml
+- include_tasks: helm.yml
+- include_tasks: calico.yml
+- include_tasks: join-workers.yml
+

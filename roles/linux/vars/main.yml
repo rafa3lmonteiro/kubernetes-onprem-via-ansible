@@ -1,0 +1,8 @@
+linux_packages:
+- vim
+- net-tools
+- inetutils-ping
+- telnet 
+- htop
+- apparmor-utils
+- curl

@@ -1,0 +1,18 @@
+#--> Padrao de syslog para servidores Linux
+
+- name: Criar o rsyslog.sh atraves do template
+  template:
+    src: bash_rsyslog-sh.j2
+    dest: /etc/profile.d/rsyslog.sh
+    owner: root
+    group: root
+    mode: '0755'  
+
+- name: Adicionar a configuração no Rsyslog
+  shell: echo "local7.notice                   /var/log/cmd.log" | sudo tee -a /etc/rsyslog.d/50-default.conf
+
+- name: Reiniciar o serviço rsyslog
+  service:
+    name: rsyslog
+    state: restarted
+    

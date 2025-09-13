@@ -1,0 +1,10 @@
+#
+# Padrão para history com data e hora
+#
+
+unset HISTFILESIZE
+readonly HISTFILE
+readonly HISTIGNORE
+readonly HISTCMD
+readonly HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTTIMEFORMAT HISTSIZE HISTFILESIZE HISTCMD HISTIGNORE HISTCONTROL

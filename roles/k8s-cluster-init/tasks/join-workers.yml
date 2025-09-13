@@ -1,0 +1,22 @@
+---
+
+# Criação de token para inclusão dos Workers
+- name: Generate token and get join command
+  shell: kubeadm token create --print-join-command 
+  register: join_command
+  when: inventory_hostname in groups['control_plane']
+
+- name: Mostrar o join command no log
+  debug:
+    msg: "{{ join_command.stdout }}"
+  when: inventory_hostname in groups['control_plane']
+
+- name: Set join command as a fact
+  set_fact:
+    worker_join_command: "{{ join_command.stdout }}"
+  when: inventory_hostname in groups['control_plane']
+
+# Join dos Workers no cluster
+- name: Join de worker nodes no cluster Kubernetes
+  shell: "{{ hostvars[groups['control_plane'][0]].worker_join_command }}"
+  when: inventory_hostname in groups['workers']

@@ -1,0 +1,20 @@
+# Configurar o NTP para sincronizar com ntp1.<acme>.pt e ntp2.<acme>.pt
+
+- name: Configurar NTP para ntp1.<acme>.pt e ntp2.<acme>.pt
+  shell: |
+    echo -e "[Time]\nNTP=ntp1.<acme>.pt ntp2.<acme>.pt" > /etc/systemd/timesyncd.conf
+
+- name: Reiniciar o serviço systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd
+    state: restarted
+    enabled: true
+
+- name: Verificar o status do NTP no timedatectl
+  command: timedatectl status
+  register: timedatectl_status
+
+- name: Exibir o status do timedatectl
+  debug:
+    var: timedatectl_status.stdout_lines
+

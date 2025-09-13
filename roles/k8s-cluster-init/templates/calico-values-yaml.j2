@@ -1,0 +1,14 @@
+#
+# Values para instalacao do Calico
+#
+
+ipam:
+  type: Calico
+calicoNetwork:
+  ipPools:
+    - cidr: 10.10.0.0/16
+      blockSize: 26
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()
+

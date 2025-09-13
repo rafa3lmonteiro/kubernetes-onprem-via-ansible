@@ -1,0 +1,32 @@
+---
+
+# Garantir que os parametros fiquem Persistentes no Systcl
+- name: Tornar os parâmetros persistentes no /etc/sysctl.conf
+  shell: "echo '{{ item }} = 1' >> /etc/sysctl.conf"
+  with_items:
+    - net.bridge.bridge-nf-call-iptables
+    - net.bridge.bridge-nf-call-ip6tables
+    - net.ipv4.ip_forward
+
+# Modprobe - carregando os módulos
+- name: Carregar os modulos "overlay" e "br_netfilter"
+  shell: |
+    echo "overlay" > /etc/modules-load.d/k8s.conf && \  
+    echo "br_netfilter" >> /etc/modules-load.d/k8s.conf && \
+    chown root:root /etc/modules-load.d/k8s.conf && \
+    chmod 0644 /etc/modules-load.d/k8s.conf
+
+- name: Carregar modulos overlay e br_netfilter
+  shell: |
+    modprobe overlay && \
+    modprobe br_netfilter
+
+- name: Garantir que os modulos overlay e br_netfilter estao ok
+  shell: |
+    lsmod |grep overlay && \
+    lsmod |grep br_netfilter
+
+  # Aplicar em tempo real os parametros no Kernel Linux
+- name: Aplicar parametros de kernel para networking
+  shell: sysctl --system
+

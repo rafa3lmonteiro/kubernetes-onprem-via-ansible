@@ -1,0 +1,24 @@
+---
+# Configurações iniciais para servidor Linux 
+
+- include_tasks: backup_confs.yml   
+- include_tasks: timezone.yml       
+- include_tasks: apt-upgrade.yml    
+- include_tasks: banner.yml         
+- include_tasks: syslog.yml         
+- include_tasks: history.yml        
+- include_tasks: hosts.yml          
+- include_tasks: sudoers.yml        
+- include_tasks: ufw.yml            
+- include_tasks: swapoff.yml        
+- include_tasks: app-armor.yml      
+- include_tasks: ntp.yml 
+- include_tasks: app-directory.yml
+
+#--> apt install {item}
+- name: Install Linux packages
+  apt:
+    name: "{{ item }}"
+  loop: "{{ linux_packages }}"
+
+...

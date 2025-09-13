@@ -1,0 +1,13 @@
+# instalacao do Helm
+- name: Instalacao do Helm
+  shell: |
+    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  when: inventory_hostname in groups['control_plane']
+
+# Adicionar repositorios necessarios no Helm
+- name: Adicionar repositorio para o Calico
+  shell: |
+    helm repo add projectcalico https://projectcalico.docs.tigera.io/charts && \
+    helm repo update
+  when: inventory_hostname in groups['control_plane']
+

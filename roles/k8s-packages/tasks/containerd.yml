@@ -1,0 +1,32 @@
+---
+# Instalacao do Containerd.io
+
+- name: Remover pacotes docker antigos
+  shell: |
+    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do apt remove -y $pkg --allow-change-held-packages; done
+  run_once: true
+
+- name: Instalar Containerd.io
+  shell: |
+    apt install -y containerd.io
+
+- name: Garantir que o diretório /etc/containerd/ exista
+  shell: |
+    mkdir -p /etc/containerd/
+
+- name: Gerar o arquivo de configuração do containerd
+  shell: containerd config default > /etc/containerd/config.toml
+
+- name: Habilitar SystemdCgroup no arquivo de configuração do containerd
+  replace:
+    path: /etc/containerd/config.toml
+    regexp: '^(\s*SystemdCgroup\s*=\s*)false'
+    replace: '\1true'
+
+- name: Reiniciar o serviço containerd
+  systemd:
+    name: containerd
+    state: restarted
+    enabled: true
+
+...

@@ -1,0 +1,14 @@
+#--> appArmor
+- name: Checar o status do AppArmor
+  command: aa-status
+  register: apparmor_status
+  ignore_errors: true
+
+- name: Verificar se o AppArmor está ativo
+  debug:
+    msg: "O AppArmor está ativo: {{ 'Yes' if 'enabled' in apparmor_status.stdout else 'No' }}"
+
+- name: Mostrar o status detalhado do AppArmor
+  debug:
+    msg: "{{ apparmor_status.stdout }}"
+

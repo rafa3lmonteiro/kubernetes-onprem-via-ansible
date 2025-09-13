@@ -1,0 +1,19 @@
+
+# instalacao do Calico
+
+- name: Copiar o manifesto do Calico a partir do template
+  template:
+    src: calico-values-yaml.j2
+    dest: /etc/kubernetes/calico-values.yaml
+    owner: root
+    group: root
+    mode: '0755' 
+  when: inventory_hostname in groups['control_plane']
+
+- name: Instalacao do Calico via Helm
+  shell: |
+    helm install calico projectcalico/tigera-operator --namespace calico-operator --create-namespace -f /etc/kubernetes/calico-values.yaml
+  when: inventory_hostname in groups['control_plane']
+
+- name: Aguardar os Pods do Calico subir no control plane - Todos os nodes
+  shell: "sleep 60"

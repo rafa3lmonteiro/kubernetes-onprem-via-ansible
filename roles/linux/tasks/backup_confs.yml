@@ -1,0 +1,16 @@
+---
+# Backup de ficheiros de configuracao do Linux, antes das alteracoes
+
+- name: Criar diretorio para backup dos arquivos 
+  shell: mkdir -p /etc/backup-confs
+
+- name: Backup do arquivo sudoers
+  shell: cp /etc/sudoers /etc/backup-confs/sudoers.bkp_{{ ansible_date_time.date }}
+
+- name: Backup do arquivo hosts
+  shell: cp /etc/hosts /etc/backup-confs/hosts.bkp_{{ ansible_date_time.date }}
+
+- name: Backup do arquivo fstab
+  shell: cp /etc/fstab /etc/backup-confs/fstab.bkp_{{ ansible_date_time.date }}
+
+...

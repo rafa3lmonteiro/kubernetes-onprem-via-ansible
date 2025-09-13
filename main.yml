@@ -1,0 +1,14 @@
+---
+
+# Playbook Ansible para construir cluster Kubernetes OnPrem 
+
+- name: Configurar cluster Kubernetes - OnPrem
+  hosts: all
+  gather_facts: true
+
+  roles:
+    - role: linux                      
+    - role: k8s-packages                        
+    - role: k8s-cluster-init           
+
+...

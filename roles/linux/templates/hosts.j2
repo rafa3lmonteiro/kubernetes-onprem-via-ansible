@@ -1,0 +1,17 @@
+########################################
+# Hosts padrão
+########################################
+# Hosts para servidores Linux.
+#
+# Este arquivo é gerenciado por automação,
+# não fazer alterações manuais neste arquivo. 
+
+127.0.0.1 localhost
+127.0.1.1 {{ ansible_hostname }}
+
+
+# Teste Cluster K8S OnPrem 
+
+10.0.0.10 k8s-master-01
+10.0.0.11 k8s-worker-01
+10.0.0.12 k8s-worker-02

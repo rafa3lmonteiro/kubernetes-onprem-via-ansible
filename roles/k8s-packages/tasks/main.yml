@@ -1,0 +1,19 @@
+---
+# Processo de configuracoes de kernel linux, instalacoes e configuracoes de pacotes Kubernetes
+
+- include_tasks: sysctld.yml        
+- include_tasks: repos.yml     
+- include_tasks: runc.yml     
+- include_tasks: containerd.yml     
+
+
+- name: Instalando os pacotes necessários
+  apt:
+    name: "{{ item }}"
+  loop: "{{ k8s_packages }}"
+
+- name: Mark hold no APT nos pacotes K8S
+  shell: |
+    apt-mark hold kubeadm kubectl kubelet containerd.io runc
+
+...

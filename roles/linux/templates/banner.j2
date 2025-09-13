@@ -1,0 +1,38 @@
+#!/bin/bash
+# Banner para servidores Linux
+# Rafael Conte Monteiro - 04/2024
+
+# variaveis
+hostname=`hostname`
+so_version=`cat /etc/os-release |grep PRETTY_NAME |awk -F\" '{print $2}'`
+users=`who | wc -l | awk '{print $1 + 1}'`
+mem_total=`free --giga | awk '/^Mem:/ {total=$2; printf "%.1fG \n", total}'`
+mem_used=`free -h | awk '/^Mem:/ {print $3}'`
+swap_used=`free --mega | awk '/^Swap:/ {used=$3; printf used " MB \n"}'`
+procs=`ps aux |wc -l`
+uptime=`uptime -p`
+root_df=`df -h / |grep / |awk '{print $5}'`
+root_df_total=`df -h / |grep / |awk '{print $2}'`
+#data_df=`df -h /data |grep /data |awk '{print $5}'`
+
+echo -e "
+
+Your server banner :)
+
+==============================================================================
+
+ - Função deste servidor ..........: Cluster Kubernetes - On-Prem 
+ - Equipa responsável    ..........: IDP
+ - Hostname do sistema   ..........: $hostname
+ - Versão do sistema     ..........: $so_version
+==============================================================================
+
+ - Usuarios conectados via ssh .........: $users usuario(os) agora
+ - Load average do processador .........:$(uptime |awk -F average: '{print $2}') (1, 5, 15 min)
+ - Utilização da memória     ...........: $mem_used do total de: $mem_total
+ - Utilização da SWAP        ...........: $swap_used
+ - Processos em execução     ...........: $procs processos rodando
+ - Tempo Online do sistema   ...........: $uptime
+ - Uso do disco em /         ...........: $root_df usado do total de $root_df_total
+==============================================================================
+"

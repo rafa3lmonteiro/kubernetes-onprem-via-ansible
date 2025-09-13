@@ -1,0 +1,8 @@
+---
+# Criar diretorio para aplicacoes do cluster
+
+- name: Criar diretorio para backup dos arquivos 
+  shell: mkdir -p /app/grafana
+
+- name: Criar diretorio para backup dos arquivos 
+  shell: mkdir -p /app/prometheus

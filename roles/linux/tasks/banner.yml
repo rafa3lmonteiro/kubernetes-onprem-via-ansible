@@ -1,0 +1,20 @@
+#--> banner para servidores Linux
+
+- name: Criar diretorio "old" dentro de /etc/update-motd.d/
+  file:
+    path: /etc/update-motd.d/old
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Mover todos arquivos de /etc/update-motd.d/ para /etc/update-motd.d/old
+  shell: mv /etc/update-motd.d/* /etc/update-motd.d/old/ 2>/dev/null || true
+
+- name: Criar o banner atraves do template
+  template:
+    src: banner.j2
+    dest: /etc/update-motd.d/banner
+    owner: root
+    group: root
+    mode: '0755'

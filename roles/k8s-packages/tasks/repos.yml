@@ -1,0 +1,29 @@
+---
+# Adicionando os repositórios necessarios
+
+- name: Instalando pre-requisitos para os repositorios
+  shell: |
+    apt-get update && \
+    apt-get install -y apt-transport-https ca-certificates curl gpg
+
+- name: Adicionar chave GPG do repositório do Containerd
+  shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+
+- name: Adicionar repositório Containerd
+  shell: |
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+- name: Adicionar e converter chave GPG do repositorio Kubernetes
+  shell: |
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+- name: Adicionar repositório do Kubernetes v1.30
+  shell: |
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+- name: apt-get update para ler e atualizar os novos repositorios k8s
+  shell: apt-get update
+
+...

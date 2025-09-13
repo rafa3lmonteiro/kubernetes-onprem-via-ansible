@@ -1,0 +1,13 @@
+#--> Desabilitar memoria swapoff
+
+- name: Desabilitar a memoria Swap 
+  command: swapoff -a
+  ignore_errors: true
+
+- name: Remover swap do /etc/fstab para desabilitar permanentemente
+  replace:
+    path: /etc/fstab
+    regexp: '^(.*swap.*)$'
+    replace: '# \1'
+
+

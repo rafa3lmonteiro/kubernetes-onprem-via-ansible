@@ -1,0 +1,8 @@
+---
+# Configuracao de Timezone para Portugal
+
+- name: Definir o timezone para "Europe/Lisbon"
+  command:
+    cmd: timedatectl set-timezone Europe/Lisbon
+
+...

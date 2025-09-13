@@ -1,0 +1,12 @@
+#--> ufw off - Desabilitar Firewall interno do Ubuntu
+
+- name: Parar o serviço de firewall UFW 
+  service:
+    name: ufw
+    state: stopped
+
+- name: Desabilitar o serviço UFW
+  service:
+    name: ufw
+    enabled: no
+

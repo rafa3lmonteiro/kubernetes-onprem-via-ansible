@@ -1,0 +1,9 @@
+#--> Padrao de formato history de comandos para administracao dos Linux
+
+- name: Criar o history.sh atraves do template
+  template:
+    src: history-sh.j2
+    dest: /etc/profile.d/history.sh
+    owner: root
+    group: root
+    mode: '0755'

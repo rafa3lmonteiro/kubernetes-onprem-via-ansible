@@ -1,0 +1,6 @@
+---
+# Instalacao do RUNC - Open Container Initiative runtime
+
+- name: Instalar RUNC - Open Container Initiative runtime
+  shell: |
+    apt install runc -y 
