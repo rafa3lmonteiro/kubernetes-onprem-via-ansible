@@ -8,6 +8,6 @@ How to create a Kubernetes cluster on On-premises infrastructure using Ansible
 - Configure the 3 target Linux servers for the Kubernetes cluster in the Ansible master inventory
 
 
-
+Kubernetes version: 1.30.4
 
 Oficial documentation: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
