@@ -6,8 +6,12 @@ How to create a Kubernetes cluster on On-premises infrastructure using Ansible
 - 3 Linux Servers Ubuntu 22.04 or 24.04
 - A linux terminal with ansible (master) configured
 - Configure the 3 target Linux servers for the Kubernetes cluster in the Ansible master inventory
+- Kubernetes cluster version: 1.30.4
 
 
-Kubernetes version: 1.30.4
+In this Ansible project, I created a set of automations that allows us to create a complete Kubernetes cluster (control plane + workers) in an on-premises infrastructure with virtual servers (Linux VMs) or physical Linux servers in a data center.
+
+This automation works similarly to what cloud providers do today when we request a new AKS (Azure), EKS (AWS), GKE (Google Cloud), but in this case, we can set up our own cluster on our own Linux servers.
+
 
 Oficial documentation: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
