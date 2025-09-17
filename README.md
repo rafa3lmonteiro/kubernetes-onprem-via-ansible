@@ -1,5 +1,5 @@
 # Kubernetes-onprem-via-ansible
-How to create a Kubernetes cluster on On-premises infrastructure using Ansible
+How to create a complete Kubernetes cluster in your own infrastructure using Ansible
 
 ## Minimum pre-requisites:
 
