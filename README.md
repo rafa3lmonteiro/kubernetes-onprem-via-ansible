@@ -16,3 +16,6 @@ This automation works similarly to what cloud providers do today when we request
 
 
 Oficial documentation: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
+
+documentation in progress
+---
