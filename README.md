@@ -15,7 +15,11 @@ In this Ansible project, I created a set of automations that allows us to create
 This automation works similarly to what cloud providers do today when we request a new AKS (Azure), EKS (AWS), GKE (Google Cloud), but in this case, we can set up our own cluster on our own Linux servers.
 
 
-Oficial documentation: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
+Kubeadm oficial documentation: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 
-documentation in progress
+
 ---
+
+# How this Ansible playbook works
+
+<img width="1842" height="955" alt="kubernetes-ansible" src="https://github.com/user-attachments/assets/4bb6304e-2f54-4ccd-98a8-5a83752bd6bb" />
