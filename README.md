@@ -20,6 +20,6 @@ Kubeadm oficial documentation: https://kubernetes.io/docs/setup/production-envir
 
 ---
 
-# How this Ansible playbook works
+## How this Ansible playbook works
 
 <img width="1842" height="955" alt="kubernetes-ansible" src="https://github.com/user-attachments/assets/42cac189-f187-435c-ab6e-208fcd8f8609" />
