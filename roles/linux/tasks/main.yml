@@ -1,5 +1,5 @@
 ---
-# Configurações iniciais para servidor Linux 
+# Initial configurations for Linux servers (control plane and workers)
 
 - include_tasks: backup_confs.yml   
 - include_tasks: timezone.yml       
