@@ -2,7 +2,7 @@
 
 # Playbook Ansible para construir cluster Kubernetes OnPrem 
 
-- name: Configurar cluster Kubernetes - OnPrem
+- name: Configure Kubernetes cluster - OnPrem
   hosts: all
   gather_facts: true
 
