@@ -1,5 +1,6 @@
 ---
-# Processo de configuracoes de kernel linux, instalacoes e configuracoes de pacotes Kubernetes
+
+# Linux kernel configuration process, Kubernetes package installations and configurations
 
 - include_tasks: sysctld.yml        
 - include_tasks: repos.yml     
