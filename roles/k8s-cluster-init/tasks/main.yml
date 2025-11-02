@@ -1,7 +1,6 @@
 ---
-#
-# Processo de inicializacao do cluster Kubernetes - OnPrem
-#
+
+# Kubernetes cluster initialization process
 
 - include_tasks: kubeadm-init.yml
 - include_tasks: helm.yml
