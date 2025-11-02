@@ -1,6 +1,6 @@
 ---
 
-# Playbook Ansible para construir cluster Kubernetes OnPrem 
+# Main Ansible Playbook for building on-premise Kubernetes clusters 
 
 - name: Configure Kubernetes cluster - OnPrem
   hosts: all
