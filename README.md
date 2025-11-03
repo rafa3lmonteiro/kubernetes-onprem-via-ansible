@@ -26,3 +26,5 @@ Kubeadm oficial documentation: https://kubernetes.io/docs/setup/production-envir
 
 
 documentation in progress...
+
+
