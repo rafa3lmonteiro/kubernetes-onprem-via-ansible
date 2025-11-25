@@ -17,7 +17,6 @@ This automation works similarly to what cloud providers do today when we request
 
 Kubeadm oficial documentation: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 
-
 ---
 
 ## How this Ansible playbook works
